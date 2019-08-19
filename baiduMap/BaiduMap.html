@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>  
+<html>
+<head>  
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+<title>Hello, World</title>  
+<style type="text/css">  
+html{height:100%}  
+body{height:100%;margin:0px;padding:0px}  
+#container{height:100%}  
+</style>  
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=rNM5x1eO0bphXw2aUVvC3yzvS8caR9sg"></script>
+<script type="text/javascript" src="mapHelper-baidu.js"></script>
+</head>  
+ 
+<body>  
+<div id="container"></div> 
+<script type="text/javascript"> 
+    var xli = [{ "lng": 118.11869880769247, "lat": 24.480519720496766 }, { "lng": 118.13968322439862, "lat": 24.510968968650566 }, { "lng": 118.11697406111388, "lat": 24.524579934874712 }, { "lng": 118.16382967649885, "lat": 24.464864722726045 }, { "lng": 118.14248593758883, "lat": 24.450391965751795 }, { "lng": 118.10202625743278, "lat": 24.444076054016953 }, { "lng": 118.17374696932573, "lat": 24.53095750728859 }, { "lng": 118.19056324846696, "lat": 24.49479167872305 }, { "lng": 118.17180662942482, "lat": 24.462693916377383 }, { "lng": 118.14629475294987, "lat": 24.459996801234993 }, { "lng": 118.13688051120842, "lat": 24.51458555442502 }];
+
+    // 创建地图实例  
+    var map = new BMap.Map("container");
+    // 创建点坐标  
+    var point = new BMap.Point(118.095271, 24.487623);
+    // 初始化地图，设置中心点坐标和地图级别  
+    map.centerAndZoom(point, 15);
+
+    // 初始化地图样式
+    map.setMapStyleV2({     
+        styleId: 'c6d61251658e59830c67e3dd49cce987'
+    });
+	MapHelper.initMapData(function(){
+		MapHelper.addPoint({ "lng": 118.11869880769247, "lat": 24.480519720496766 });
+		MapHelper.addLine([{ "lng": 118.11869880769247, "lat": 24.480519720496766 }, { "lng": 118.13968322439862, "lat": 24.510968968650566 }, { "lng": 118.11697406111388, "lat": 24.524579934874712 }])
+		MapHelper.addRectangle({ "lng": 118.11869880769247, "lat": 24.480519720496766 },{ "lng": 118.13968322439862, "lat": 24.510968968650566 });
+	})
+	
+    
+    var sContent ="<div>"+
+        "<h4 style='margin:0 0 5px 0;padding:0.2em 0'>天安门</h4>" +
+        "<img style='float:right;margin:4px' id='imgDemo' src='img/login/background.png' width='139' height='104' title='天安门'/>" +
+        "<p style='margin:0;line-height:1.5;font-size:13px;text-indent:2em'>天安门坐落在中国北京市中心,故宫的南侧,与天安门广场隔长安街相望,是清朝皇城的大门...</p>" +
+        "</div>";
+    var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+	/*
+    marker.addEventListener('click', function (evt) {
+        var point = evt.target.point;
+        //var info  = '点击Marker坐标: ' + point.lng.toFixed(0) + ', ' + point.lat.toFixed(0);
+        //alert(info);
+        this.openInfoWindow(infoWindow);
+    });
+	*/
+	/*
+    map.addEventListener("tilesloaded", initMapData());
+    function initMapData() {
+        //alert(infoWindow.getContent());
+    }*/
+	/*
+    map.addEventListener("click", function (evt) {
+        var point = evt.point;
+        var x = {
+            lng : point.lng,
+            lat: point.lat
+        }
+        li.push(x);
+        console.log(JSON.stringify(li))
+    });
+	*/
+	
+</script>  
+</body>  
+</html>
